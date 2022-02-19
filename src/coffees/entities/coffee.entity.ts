@@ -22,5 +22,5 @@ export class Coffee {
     @ManyToMany((type) => Flavor, (flavor) => flavor.coffees, {
         cascade: true,
     })
-    flavors: string[];
+    flavors: Flavor[];
 }
