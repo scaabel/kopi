@@ -24,15 +24,19 @@ import appConfig from './config/app.config';
             }),
         }),
         CoffeesModule,
-        TypeOrmModule.forRoot({
-            type: 'postgres',
-            host: process.env.DATABASE_HOST,
-            port: +process.env.DATABASE_PORT,
-            username: process.env.DATABASE_USER,
-            password: process.env.DATABASE_PASSWORD,
-            database: process.env.DATABASE_NAME,
-            autoLoadEntities: Boolean(process.env.DATABASE_AUTO_LOAD_ENTITIES),
-            synchronize: Boolean(process.env.DATABASE_SYNCHRONIZE),
+        TypeOrmModule.forRootAsync({
+            useFactory: () => ({
+                type: 'postgres',
+                host: process.env.DATABASE_HOST,
+                port: +process.env.DATABASE_PORT,
+                username: process.env.DATABASE_USER,
+                password: process.env.DATABASE_PASSWORD,
+                database: process.env.DATABASE_NAME,
+                autoLoadEntities: Boolean(
+                    process.env.DATABASE_AUTO_LOAD_ENTITIES
+                ),
+                synchronize: Boolean(process.env.DATABASE_SYNCHRONIZE),
+            }),
         }),
         RatingModule,
         DatabaseModule,
