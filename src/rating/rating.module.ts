@@ -3,9 +3,7 @@ import { RatingService } from './rating.service';
 import { CoffeesModule } from '../coffees/coffees.module';
 
 @Module({
-    imports: [
-        CoffeesModule,
-    ],
+    imports: [CoffeesModule],
     providers: [RatingService],
 })
 export class RatingModule {}
